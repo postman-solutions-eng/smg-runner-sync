@@ -14,7 +14,7 @@
 						"id": "4c1c1d59-50fa-4aaf-865f-f9ab407e8ca1",
 						"exec": [
 							"",
-							"var res = pm.response.json()",
+							"var res = pm.response.json() // comment",
 							"var deckId = res.deck_id",
 							"pm.collectionVariables.set(\"deckId\", deckId)",
 							"",
