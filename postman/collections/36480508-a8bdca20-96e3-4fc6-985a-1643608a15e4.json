@@ -576,7 +576,7 @@
 			]
 		},
 		{
-			"name": "Draw card for pile Copy",
+			"name": "Draw card for pile",
 			"event": [
 				{
 					"listen": "test",
@@ -1093,7 +1093,7 @@
 			]
 		},
 		{
-			"name": "Add single card to pile Copy",
+			"name": "Add single card to pile",
 			"event": [
 				{
 					"listen": "test",
