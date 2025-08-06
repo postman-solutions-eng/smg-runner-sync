@@ -1293,6 +1293,311 @@
 			]
 		},
 		{
+			"name": "List all cards in piles Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e49a5666-0c0e-4dad-b346-c1b94ebc78ea",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is within an acceptable range\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response has the required fields - success, deck_id, remaining, and piles\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData).to.have.property('success');",
+							"    pm.expect(responseData).to.have.property('deck_id');",
+							"    pm.expect(responseData).to.have.property('remaining');",
+							"    pm.expect(responseData).to.have.property('piles');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Piles object is present and contains the expected number of elements\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.piles).to.exist.and.to.be.an('object');",
+							"    pm.expect(Object.keys(responseData.piles)).to.have.lengthOf(1);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Validate non-empty strings for code, image, value, and suit in the cards array\", function () {",
+							"    const responseData = pm.response.json();",
+							"",
+							"    pm.expect(responseData).to.be.an('object');",
+							"    pm.expect(responseData.piles).to.be.an('object');",
+							"    pm.expect(responseData.piles.prodPile001.cards).to.be.an('array');",
+							"",
+							"    responseData.piles.prodPile001.cards.forEach(function(card) {",
+							"        pm.expect(card.code).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Code should not be empty\");",
+							"        pm.expect(card.image).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Image should not be empty\");",
+							"        pm.expect(card.value).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Value should not be empty\");",
+							"        pm.expect(card.suit).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Suit should not be empty\");",
+							"    });",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "36480508-7afb9f8c-487a-4ba9-bacc-959411454e65",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/list/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						":deckId",
+						"pile",
+						":pileName",
+						"list",
+						""
+					],
+					"variable": [
+						{
+							"id": "50dc6088-23a0-4028-a8a1-a1f08515d825",
+							"key": "deckId",
+							"value": "{{deckId}}",
+							"description": "[Required] ID for the current deck being used"
+						},
+						{
+							"id": "7214534d-76ed-4cf9-9026-6f38f9eed3b0",
+							"key": "pileName",
+							"value": "{{pileName}}",
+							"description": "[Required] ID for the current pile"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "36480508-de46080a-f6ff-4ac3-9737-9fab8e41e371",
+					"name": "500 Server Error",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://deckofcardsapi.com/api/deck/:deckId/pile/:pileName/list",
+							"protocol": "https",
+							"host": [
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								":deckId",
+								"pile",
+								":pileName",
+								"list"
+							],
+							"variable": [
+								{
+									"key": "deckId",
+									"value": "{{deckId}}",
+									"description": "[Required] ID for the current deck being used"
+								},
+								{
+									"key": "pileName",
+									"value": "{{pileName}}"
+								}
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "html",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Sep 2024 14:26:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/html"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin, Cookie"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=rupXnlgIwsRmhtZwX%2FS0CXIY0fTn%2F%2FgVAJxqVQcLfwJZ9GB6WCdFy7wZCQMJYl1o7lxgGDL3y%2FIXVguxD7B8JZknd9j4%2FkI8TaP%2F4IYapfiOFgMoryDj32htRLWOderwOUzB1xY%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "8bd669ef5d03727b-EWR"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "\n<!doctype html><html lang=\"en\"><head><title>Server Error (500)</title></head><body><h1>Server Error (500)</h1><p></p></body></html>\n"
+				},
+				{
+					"id": "36480508-826899e8-79ba-4abf-8734-22bc7ee808d6",
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://deckofcardsapi.com/api/deck/:deckId/pile/:pileName/list",
+							"protocol": "https",
+							"host": [
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								":deckId",
+								"pile",
+								":pileName",
+								"list"
+							],
+							"variable": [
+								{
+									"key": "deckId",
+									"value": "{{deckId}}",
+									"description": "[Required] ID for the current deck being used"
+								},
+								{
+									"key": "pileName",
+									"value": "{{pileName}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Sep 2024 14:27:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=bltcnOT6xm6W%2FLpP4wUP2P%2BywVPetAQC3efFOjNHq8Os6r8oSlXM06m7yJzptS12n2c48GXlzGzsNWXDf41m4hgKoOqlEhgOabb0cQPB3ciD6JPWo9DFzabd8KMMD81UOTnVzy0%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "8bd66b474f3b727b-EWR"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"success\": true,\n    \"deck_id\": \"b1dgkveh32jw\",\n    \"remaining\": 51,\n    \"piles\": {\n        \"player1\": {\n            \"remaining\": 1,\n            \"cards\": [\n                {\n                    \"code\": \"8S\",\n                    \"image\": \"https://deckofcardsapi.com/static/img/8S.png\",\n                    \"images\": {\n                        \"svg\": \"https://deckofcardsapi.com/static/img/8S.svg\",\n                        \"png\": \"https://deckofcardsapi.com/static/img/8S.png\"\n                    },\n                    \"value\": \"8\",\n                    \"suit\": \"SPADES\"\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
 			"name": "Draw card for pile 2",
 			"event": [
 				{
