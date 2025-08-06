@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Open new deck Copy",
+			"name": "Open new deck",
 			"event": [
 				{
 					"listen": "test",
@@ -185,7 +185,7 @@
 			]
 		},
 		{
-			"name": "Reshuffle remaining deck Copy",
+			"name": "Reshuffle remaining deck",
 			"event": [
 				{
 					"listen": "test",
