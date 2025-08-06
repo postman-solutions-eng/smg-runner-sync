@@ -1293,7 +1293,7 @@
 			]
 		},
 		{
-			"name": "List all cards in piles Copy",
+			"name": "List all cards in piles",
 			"event": [
 				{
 					"listen": "test",
