@@ -1811,7 +1811,7 @@
 			]
 		},
 		{
-			"name": "Add single card to pile Copy 2",
+			"name": "Add single card to pile 2",
 			"event": [
 				{
 					"listen": "test",
