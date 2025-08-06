@@ -1093,6 +1093,206 @@
 			]
 		},
 		{
+			"name": "Add single card to pile Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fa9a7d84-298d-4e0e-8163-e45d252afbd5",
+						"exec": [
+							"pm.test(\"Response status code is 200\", function () {",
+							"  pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response time is within acceptable range\", function () {",
+							"  pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Content-Type header is application/json\", function () {",
+							"  pm.expect(pm.response.headers.get(\"Content-Type\")).to.include(\"application/json\");",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response includes 'success' field with a boolean value\", function () {",
+							"    const responseData = pm.response.json();",
+							"    ",
+							"    pm.expect(responseData).to.have.property('success').that.is.a('boolean');",
+							"});",
+							"",
+							"",
+							"pm.test(\"Response includes 'deck_id' field\", function () {",
+							"  const responseData = pm.response.json();",
+							"  pm.expect(responseData).to.have.property('deck_id');",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"id": "36480508-5c634027-32ee-43b5-9585-30a74434f5fd",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/add/?cards={{cardCode}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"deck",
+						":deckId",
+						"pile",
+						":pileName",
+						"add",
+						""
+					],
+					"query": [
+						{
+							"key": "cards",
+							"value": "{{cardCode}}",
+							"description": "[Required] ID for the card to be added to a pile"
+						}
+					],
+					"variable": [
+						{
+							"key": "deckId",
+							"value": "{{deckId}}",
+							"description": "[Required] ID for the current deck being used"
+						},
+						{
+							"key": "pileName",
+							"value": "{{pileName}}",
+							"description": "[Required] ID for the pile the card will be added too"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"id": "36480508-03840a29-14de-4959-83df-b2994173e4b0",
+					"name": "200 Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://deckofcardsapi.com/api/deck/:deckId/pile/:pileName/add/?cards={{cardCode}}",
+							"protocol": "https",
+							"host": [
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								":deckId",
+								"pile",
+								":pileName",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "cards",
+									"value": "{{cardCode}}"
+								}
+							],
+							"variable": [
+								{
+									"key": "deckId",
+									"value": "{{deckId}}",
+									"description": "[Required] ID for the current deck being used"
+								},
+								{
+									"key": "pileName",
+									"value": "{{pileName}}"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 03 Sep 2024 14:26:56 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report\\/v4?s=09TWk2jZQUGXstMROZa%2BjUlyOuMCixGD%2BovpvmEpvwSw%2FvJdd1rS%2BHYcY2la7T7ChS2tGn%2FLSPs0juLLDlw7AggRWC3Wiy7pXEvUAR8kCwETlJChZecs3A5WLBegpov10Bid%2BoU%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"success_fraction\":0,\"report_to\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "8bd66af1d869727b-EWR"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						},
+						{
+							"key": "alt-svc",
+							"value": "h3=\":443\"; ma=86400"
+						}
+					],
+					"cookie": [],
+					"responseTime": null,
+					"body": "{\n    \"success\": true,\n    \"deck_id\": \"b1dgkveh32jw\",\n    \"remaining\": 51,\n    \"piles\": {\n        \"player1\": {\n            \"remaining\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
 			"name": "Draw card for pile Copy 2",
 			"event": [
 				{
@@ -1611,7 +1811,7 @@
 			]
 		},
 		{
-			"name": "Add single card to pile Copy",
+			"name": "Add single card to pile Copy 2",
 			"event": [
 				{
 					"listen": "test",
@@ -1651,7 +1851,7 @@
 					}
 				}
 			],
-			"id": "36480508-5c634027-32ee-43b5-9585-30a74434f5fd",
+			"id": "36480508-0a380756-a975-4a34-a352-4dfff6ec6c7f",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
 			},
@@ -1681,11 +1881,13 @@
 					],
 					"variable": [
 						{
+							"id": "aea15601-bdd0-4356-aab1-ffa62ce939e0",
 							"key": "deckId",
 							"value": "{{deckId}}",
 							"description": "[Required] ID for the current deck being used"
 						},
 						{
+							"id": "dbba2061-96ad-4b4b-ba53-eafa1566f08c",
 							"key": "pileName",
 							"value": "{{pileName}}",
 							"description": "[Required] ID for the pile the card will be added too"
@@ -1695,7 +1897,7 @@
 			},
 			"response": [
 				{
-					"id": "36480508-03840a29-14de-4959-83df-b2994173e4b0",
+					"id": "36480508-f20a2f6d-bb69-45ef-9949-7f00bdbf1766",
 					"name": "200 Success",
 					"originalRequest": {
 						"method": "GET",
