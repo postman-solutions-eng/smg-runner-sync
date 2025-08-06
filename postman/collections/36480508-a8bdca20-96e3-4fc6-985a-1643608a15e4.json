@@ -1293,7 +1293,7 @@
 			]
 		},
 		{
-			"name": "Draw card for pile Copy 2",
+			"name": "Draw card for pile 2",
 			"event": [
 				{
 					"listen": "test",
