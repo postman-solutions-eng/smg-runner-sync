@@ -1359,7 +1359,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/list/",
+					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/list/1",
 					"host": [
 						"{{url}}"
 					],
@@ -1370,17 +1370,15 @@
 						"pile",
 						":pileName",
 						"list",
-						""
+						"1"
 					],
 					"variable": [
 						{
-							"id": "50dc6088-23a0-4028-a8a1-a1f08515d825",
 							"key": "deckId",
 							"value": "{{deckId}}",
 							"description": "[Required] ID for the current deck being used"
 						},
 						{
-							"id": "7214534d-76ed-4cf9-9026-6f38f9eed3b0",
 							"key": "pileName",
 							"value": "{{pileName}}",
 							"description": "[Required] ID for the current pile"
