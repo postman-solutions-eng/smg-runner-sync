@@ -1359,7 +1359,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/list/1",
+					"raw": "{{url}}/api/deck/:deckId/pile/:pileName/list/",
 					"host": [
 						"{{url}}"
 					],
@@ -1370,7 +1370,7 @@
 						"pile",
 						":pileName",
 						"list",
-						"1"
+						""
 					],
 					"variable": [
 						{
