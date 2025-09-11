@@ -77,13 +77,13 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/api/deck/new/",
+					"raw": "{{url}}/api/adeck/new/",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
 						"api",
-						"deck",
+						"adeck",
 						"new",
 						""
 					]
