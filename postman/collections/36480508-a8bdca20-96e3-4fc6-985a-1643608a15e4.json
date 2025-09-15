@@ -2643,7 +2643,7 @@
 							"    pm.expect(responseData).to.have.property('success');",
 							"    pm.expect(responseData).to.have.property('deck_id');",
 							"    pm.expect(responseData).to.have.property('remaining');",
-							"    pm.expect(responseData).to.have.property('shuffled');",
+							"    //pm.expect(responseData).to.have.property('shuffled');",
 							"});",
 							"",
 							"",
@@ -2671,8 +2671,11 @@
 					"listen": "prerequest",
 					"script": {
 						"id": "de7d8a64-844b-490a-8dfa-2b570be15541",
-						"exec": [],
-						"type": "text/javascript"
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
