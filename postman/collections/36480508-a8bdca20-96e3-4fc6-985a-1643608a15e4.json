@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "36480508-a8bdca20-96e3-4fc6-985a-1643608a15e4",
-		"name": "Deck and Dealing - Runner/Monitor",
+		"name": "CardEngine - Runner/Monitor",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
