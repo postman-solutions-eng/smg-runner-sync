@@ -23,6 +23,7 @@
 							"    pm.response.to.have.status(200);",
 							"});",
 							"",
+							"",
 							"// 2. Response Schema Validation",
 							"pm.test(\"Response has correct schema\", function () {",
 							"    const responseData = pm.response.json();",
@@ -65,7 +66,16 @@
 							"pm.collectionVariables.set(\"deckId\", responseData.deck_id);"
 						],
 						"type": "text/javascript",
-						"packages": {}
+						"packages": {},
+						"requests": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "e0dc173e-2dd6-4ea6-8c24-064df7e70403",
+						"exec": [],
+						"type": "text/javascript"
 					}
 				}
 			],
